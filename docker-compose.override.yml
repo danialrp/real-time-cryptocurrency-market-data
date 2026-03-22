@@ -1,0 +1,37 @@
+services:
+  runtime:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/app       
+    command: ["air"]
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    environment:
+      - AIR_TMP_DIR=/tmp/.air
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: ["go", "run", "./cmd/scheduler/main.go"]
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: ["go", "run", "./cmd/worker/main.go"]

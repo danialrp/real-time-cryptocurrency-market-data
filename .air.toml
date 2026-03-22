@@ -1,0 +1,50 @@
+# Project root directory
+root = "."
+
+# Temporary build directory
+tmp_dir = "tmp"
+
+[build]
+# Build the binary after killing old process on port 9090
+cmd = """
+lsof -ti:9090 | xargs kill -9 || true
+go build -o ./tmp/main ./cmd/runtime
+"""
+
+# Built binary path
+bin = "tmp/main"
+
+# Delay in milliseconds after file change before rebuilding
+delay = 200
+
+# Folders to ignore for rebuild trigger
+exclude_dir = ["tmp", "vendor", "storage"]
+
+# File extensions to watch for rebuild
+include_ext = ["go", "tpl", "tmpl", "html"]
+
+# Specific files to ignore (empty for now)
+exclude_file = []
+
+# File to store build logs
+log = "build.log"
+
+[run]
+# Command to run the built binary
+cmd = "./tmp/main"
+
+# Kill the process if execution fails
+kill_on_fail = true
+
+# Enforce to restart
+restart = true
+
+[log]
+# Show timestamps in logs
+time = true
+
+[color]
+main = "yellow"
+watcher = "cyan"
+build = "green"
+runner = "magenta"

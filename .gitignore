@@ -1,0 +1,43 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of the go coverage tool
+*.cover
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Logs and temp files
+*.log
+*.tmp
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+**/node_modules
+**/dist
+.env
+.env.local
+/storage
+
+# Postgres volume
+pgdata/
+
+# Air
+/tmp
+/build.log
+
+# MacOS
+.DS_Store

@@ -24,7 +24,7 @@ Built as a learning ground and architectural reference for **Go microservices**,
 The system is structured as a **4-service pipeline**:
 
 ```
-Exchange WebSocket Feed
+Exchange WebSocket Feed Data
         │
         ▼
   ┌─────────────┐
